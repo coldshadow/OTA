@@ -1,0 +1,144 @@
+@charset "utf-8";
+
+* {
+	font-family:tahoma, verdana, sans-serif;
+}
+
+body {
+	background:#b6b6b6;
+	margin:0;
+	padding:0;
+}
+
+#login {
+	width:300px;
+	background:#f0f0f0;
+	border:1px solid white;
+	margin:auto;
+	padding:1em;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+#register {
+	width:330px;
+	background:#f0f0f0;
+	border:1px solid white;
+	margin:auto;
+	padding:1em;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+h1,h2,h3,h4,h5 {
+	margin-top:0;
+}
+
+input[type=text], input[type=password] {
+	display:block;
+	margin:0 0 1em 0;
+	width:280px;
+	border:5px;
+	padding:1em;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+input[type=submit], form a, fieldset a, a.submit {
+	border:none;
+	margin:0 1em 0 0;
+	padding:6px;
+	text-decoration: none;
+	font-size:12px;
+	background:#348075;
+	color:white;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	
+	box-shadow:0 1px 0 white;
+	-moz-box-shadow:0 1px 0 white;
+	webkit-box-shadow:0 1px 0 white;
+}
+
+input[type=submit]:hover, form a:hover, fieldset a:hover, a.submit:hover {
+	background:#287368;
+	cursor:pointer;
+}
+
+.error {
+	color:#393939;
+	font-size:15px;
+}
+
+fieldset {
+	width:300px;
+	margin:0 auto;
+	margin-bottom:2em;
+	display:block;
+}
+
+h1 {
+	text-shadow:0 1px 0 white;
+}
+
+#generic {
+	width:300px;
+	background:#f0f0f0;
+	border:1px solid #f0f0f0;
+	margin:10px auto;
+	padding:1em;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+#generic legend {
+	background:#f0f0f0;
+	border:1px solid #f0f0f0;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+.center {
+	text-align:center;
+}
+
+.left {
+	float:left;
+}
+
+.right {
+	float:right;
+}
+
+.clearfix {
+	clear:both;
+}
+
+#navlogin input[type=text], #navlogin input[type=password] {
+	display:inline;
+	margin:5px;
+	width:120px;
+	border:1px;
+	padding:2px;
+	
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+}
+
+#navlogin input[type=submit] {
+	border:1px;
+	padding:1px;
+}
