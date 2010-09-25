@@ -80,7 +80,6 @@ class User extends DataMapper {
 			$this->{$field} = sha1($this->salt.$this->{$field});
 		}
 	}
-	
 }
 
 /* End of file: user.php */
