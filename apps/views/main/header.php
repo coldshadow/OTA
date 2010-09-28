@@ -20,16 +20,7 @@
 		<div id="wrapper">
 			<div id="header">
 				<div class="left">
-					<?php
-					echo 'Home';
-					echo '|';
-					echo 'Friends';
-					echo '|';
-					echo 'Profile';
-					if($this->session->userdata('permission') == 9) {
-						echo '|'.anchor('admin','Admin');
-					}
-					?>
+					Left Header
 				</div>
 				<div class="right">
 					<?php
