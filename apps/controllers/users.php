@@ -8,15 +8,17 @@
  */
 class Users extends Controller {
 	
-	function index() {
+	function index($errors = array()) {
 		$template['page_view'] = 'login_page';
 		$template['page_title'] = 'Login Page';
+		$template['errors'] = $errors;
 		$this->load->view('main/index', $template);
 	}
 	
-	function regindex() {
+	function regindex($errors = array()) {
 		$template['page_view'] = 'register_form';
 		$template['page_title'] = 'Registration Page';
+		$template['errors'] = $errors;
 		$this->load->view('main/index', $template);
 	}
 	
@@ -34,10 +36,7 @@ class Users extends Controller {
 		$u->pid = $p->id;
 		
 		if(!$u->save()) {
-			$template['errors'] = $u->error->all;
-			$template['page_view'] = 'register_form';
-			$template['page_title'] = 'Registration Page';
-			$this->load->view('main/index', $template);
+			$this->regindex($u->error->all);
 		}
 	}
 	
@@ -60,10 +59,7 @@ class Users extends Controller {
 			$this->session->set_userdata($data);
 			redirect('ucp');
 		} else {
-			$template['page_view'] = 'login_page';
-			$template['page_title'] = 'Login Page';
-			$template['errors'] = $u->error->all;
-			$this->load->view('main/index', $template);
+			$this->index($u->error->all);
 		}
 	}
 	
