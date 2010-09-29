@@ -74,8 +74,10 @@ input[type=submit]:hover, form a:hover, fieldset a:hover, a.submit:hover {
 }
 
 .error {
-	color:#393939;
+	color:rgb(200,10,10);
 	font-size:15px;
+	font-style:italic;
+	font-family:Georgia;
 }
 
 fieldset {
@@ -83,6 +85,7 @@ fieldset {
 	margin:0 auto;
 	margin-bottom:2em;
 	display:block;
+	line-height:10px;
 }
 
 h1 {

@@ -1,6 +1,13 @@
 				<div id="users_page_container">
 					<div>
 						<fieldset id="login">
+							<?php
+								if(!empty($errors)) {
+									foreach($errors as $error) {
+										echo $error;
+									}
+								}
+							?>
 							<?= form_open('users/register'); ?>
 							<legend>Register</legend>
 							<hr/>

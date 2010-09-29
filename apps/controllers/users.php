@@ -33,7 +33,12 @@ class Users extends Controller {
 		$p->where('pname', 'Registered User')->get();
 		$u->pid = $p->id;
 		
-		$u->save();
+		if(!$u->save()) {
+			$template['errors'] = $u->error->all;
+			$template['page_view'] = 'register_form';
+			$template['page_title'] = 'Registration Page';
+			$this->load->view('main/index', $template);
+		}
 	}
 	
 	function login() {
@@ -51,21 +56,14 @@ class Users extends Controller {
 				'session_id' => md5($this->input->post('username').'_'.$p->pmod),
 				'logged_in' => TRUE
 			);
+			
 			$this->session->set_userdata($data);
 			redirect('ucp');
-			
-			/*echo "Welcome ".$u->username;
-			echo "You are logged in with the email address ".$u->email;
-			echo "Your permissions are ". $p->pname;
-			echo "<br />";
-			echo "The current session id is ".$this->session->userdata('session_id');
-			if($this->session->userdata('permission') == '9') {
-				echo 'You are an ADMIN!';
-			} else {
-				echo 'Shut up you cunt';
-			}
-			echo "<br />";
-			echo anchor("users/logout", "Logout");*/
+		} else {
+			$template['page_view'] = 'login_page';
+			$template['page_title'] = 'Login Page';
+			$template['errors'] = $u->error->all;
+			$this->load->view('main/index', $template);
 		}
 	}
 	

@@ -12,28 +12,23 @@ class User extends DataMapper {
 		 * An array with keys and values to define the field information and rules
 		 * Rules are used for validation
 		 */
-		array(
-			'field' => 'first_name',
+		'first_name' => array(
 			'label' => 'First Name',
 			'rules' => array('required','trim')
 		),
-		array(
-			'field' => 'surname',
+		'surname' => array(
 			'label' => 'Surname',
 			'rules' => array('required','trim')
 		),
-		array(
-			'field' => 'username',
+		'username' => array(
 			'label' => 'Username',
 			'rules' => array('required','trim','unique','min_length'=>4)
 		),
-		array(
-			'field' => 'password',
+		'password' => array(
 			'label' => 'Password',
 			'rules' => array('required','trim','alpha_dash','min_length'=>6,'encrypt')
 		),
-		array(
-			'field' => 'email',
+		'email' => array(
 			'label' => 'E-mail',
 			'rules' => array('required','trim','valid_email')
 		)
