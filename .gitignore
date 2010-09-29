@@ -3,3 +3,4 @@ sys/**/*
 sys/*
 apps/config/*
 README
+*.tmproj
