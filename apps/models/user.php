@@ -30,7 +30,7 @@ class User extends DataMapper {
 		),
 		'email' => array(
 			'label' => 'E-mail',
-			'rules' => array('required','trim','valid_email')
+			'rules' => array('required','trim','unique','valid_email')
 		)
 	);
 	

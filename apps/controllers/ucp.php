@@ -5,7 +5,7 @@ class Ucp extends Controller {
 	function __construct() {
 		parent::__construct();
 		$is_logged_in = $this->session->userdata('logged_in');
-		if($is_logged_in == FALSE) {
+		if($is_logged_in = FALSE) {
 			redirect('users');
 		}
 	}

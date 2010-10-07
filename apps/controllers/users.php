@@ -8,6 +8,10 @@
  */
 class Users extends Controller {
 	
+	function __construct() {
+		parent::__construct();
+	}
+	
 	function index($errors = array()) {
 		$template['page_view'] = 'login_page';
 		$template['page_title'] = 'Login Page';
@@ -64,8 +68,24 @@ class Users extends Controller {
 	}
 	
 	function logout() {
-		$this->session->sess_destroy();
-		redirect('users');
+		$u = new User();
+		if(!$this->_is_logged_in()) {
+			$u->error_message('logged_in', 'You are not currently logged in.');
+			$this->index($u->error->all);
+		} else {
+			$this->session->sess_destroy();
+			$u->error_message('logged_out', 'You have been logged out.');
+			$this->index($u->error->all);
+		}
+	}
+	
+	function _is_logged_in() {
+		$is_logged_in = $this->session->userdata('logged_in');
+		if(!isset($is_logged_in) || $is_logged_in == false) {
+			return false;
+		} else {
+			return true;
+		}
 	}
 }
 
