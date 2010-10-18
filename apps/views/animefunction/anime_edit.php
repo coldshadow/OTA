@@ -4,7 +4,7 @@
 							<?= form_open('animes/updateanime'); ?>
 							<legend>Enter Series Info</legend>
 							<hr/>
-							<?= form_input('id', $row->id); ?>
+							<?= form_input('id', $row->id, 'disabled="disabled"'); ?>
 							<?php
 							$field_array = array(
 								'anime_name' => 'Name: ',
@@ -19,7 +19,18 @@
 								echo '<p>';
 								echo form_label($name, $field_name);
 								echo '<br>';
-								echo form_input($field_name, $row->$field_name);
+								if($field_name == 'anime_description') {
+									echo form_textarea($field_name, $row->$field_name);
+								} elseif($field_name == 'anime_watched_status') {
+									$data = array(
+										'0' => 'Not Watched',
+										'1' => 'Part Watched',
+										'2' => 'All Watched'
+									);
+									echo form_dropdown($field_name, $data, $row->$field_name);
+								} else {
+									echo form_input($field_name, $row->$field_name);
+								}
 								echo '</p>';
 							}
 							?>

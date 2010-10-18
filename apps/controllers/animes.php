@@ -9,9 +9,7 @@
 class Animes extends Controller {
 	
 	function index() {
-		$template['page_view'] = 'animefunction/anime_entry';
-		$template['page_title'] = 'Anime Entry Form';
-		$this->load->view('main/index', $template);
+		$this->listAnime();
 	}
 	
 	function addAnime() {
@@ -24,8 +22,9 @@ class Animes extends Controller {
 		$a->anime_alt_name = $this->input->post('anime_alt_name');
 		$a->anime_watched_status = $this->input->post('anime_watched_status');
 		
-		$a->save();
-			
+		if($a->save()) {
+			redirect($_SERVER["HTTP_REFERER"]);
+		}
 	}
 	
 	function listAnime() {
@@ -70,11 +69,31 @@ class Animes extends Controller {
 	}
 	
 	function updateAnime() {
-
+		$id = $this->uri->segment(3);
+		$data = array(
+			'anime_name' => $this->input->post('anime_name'),
+			'anime_description' => $this->input->post('anime_description'),
+			'anime_episodes' => $this->input->post('anime_episodes'),
+			'anime_ova' => $this->input->post('anime_ova'),
+			'anime_alt_name' => $this->input->post('anime_alt_name'),
+			'anime_watched_status' => $this->input->post('anime_watched_status')
+		);
+		
+		$a = new Anime();
+		$a->update($data);
+		if(!$a->update($data)) {
+			redirect('animes/editAnime/3');
+		} else {
+			redirect('animes/listAnime');
+		}
 	}
 	
 	function deleteAnime() {
-		
+		$id = $this->uri->segment(3);
+		$a = new Anime();
+		$a->where('id', $id)->get();
+		$a->delete();
+		$this->listAnime();
 	}
 
 }
