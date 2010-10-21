@@ -7,6 +7,7 @@
 										echo $error;
 									}
 								}
+								echo '<p class="error">'.$this->session->flashdata('not_logged_in').'</p>';
 							?>
 							<?= form_open('users/login'); ?>
 							<legend>Login</legend>
