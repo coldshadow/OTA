@@ -2,7 +2,7 @@
 
 class Anime extends DataMapper {
 	
-	public $has_many = array('user');
+	public $has_many = array('anime');
 	
 	public $validation = array(
 		array(
@@ -41,4 +41,7 @@ class Anime extends DataMapper {
 		parent::DataMapper();
 	}
 	
+	function Anime() {
+		parent::DataMapper();
+	}
 }

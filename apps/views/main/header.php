@@ -9,6 +9,9 @@
 		<script type="text/javascript" src="<?php echo base_url(); ?>inc/js/jquery-1.4.2.js"></script>
 		<script type="text/javascript" src="<?php echo base_url(); ?>inc/js/fn.hint.js"></script>
 		<script type="text/javascript">
+			$(document).ready(function() {
+				$('table tr:even td').addClass('sec');
+			})
 			$(function() {
 				$(":input").hint();
 				$(":textarea").hint();
