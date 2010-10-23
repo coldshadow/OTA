@@ -20,9 +20,33 @@ class Ucp extends Controller {
 		$this->load->view('main/index', $template);
 	}
 	
-	function edit() {
+	function editProfile($errors = array()) {
 		// edit user profile
 		// if admin, edit ANYONE... some work needed there.
+		$u = new User();
+		$id = $this->uri->segment(3);
+		$template['row'] = $u->get_by_id($id);
+		$template['page_view'] = 'edit_profile';
+		$template['page_title'] = 'Edit Profile';
+		$template['errors'] = $errors;
+		$this->load->view('main/index', $template);
+	}
+	
+	function updateprofile () {
+		// update records on the database
+		// code to be writen 
+		$id = $this->uri->segment(3);
+		$data = array(
+			'first_name' => $this->input->post('first_name'),
+			'surname' => $this->input->post('surname')
+		);
+		$u = new User();
+		$u->where('id', '1')->update($data);
+		if(!$u->update($data)) {
+			redirect('ucp/editprofile/');
+		} else {
+			redirect('ucp/');
+		}
 	}
 	
 }
