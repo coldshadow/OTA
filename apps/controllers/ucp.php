@@ -36,14 +36,15 @@ class Ucp extends Controller {
 		// update records on the database
 		// code to be writen 
 		$id = $this->uri->segment(3);
-		$data = array(
-			'first_name' => $this->input->post('first_name'),
-			'surname' => $this->input->post('surname')
-		);
 		$u = new User();
-		$u->where('id', '1')->update($data);
-		if(!$u->update($data)) {
-			redirect('ucp/editprofile/');
+		$u->get_by_id($u->id);
+		
+		$u->first_name = $this->input->post('first_name');
+		$u->surname = $this->input->post('surname');
+		
+		$u->save();
+		if(!$u->save()) {
+			redirect('ucp/');
 		} else {
 			redirect('ucp/');
 		}
