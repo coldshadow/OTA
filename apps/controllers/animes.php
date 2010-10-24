@@ -70,19 +70,20 @@ class Animes extends Controller {
 	
 	function updateAnime() {
 		$id = $this->uri->segment(3);
-		$data = array(
-			'anime_name' => $this->input->post('anime_name'),
-			'anime_description' => $this->input->post('anime_description'),
-			'anime_episodes' => $this->input->post('anime_episodes'),
-			'anime_ova' => $this->input->post('anime_ova'),
-			'anime_alt_name' => $this->input->post('anime_alt_name'),
-			'anime_watched_status' => $this->input->post('anime_watched_status')
-		);
 		
 		$a = new Anime();
-		$a->update($data);
-		if(!$a->update($data)) {
-			redirect('animes/editAnime/3');
+		$a->get_by_id($a->id);
+		
+		$a->anime_name = $this->input->post('anime_name');
+		$a->anime_description = $this->input->post('anime_description');
+		$a->anime_episodes = $this->input->post('anime_episodes');
+		$a->anime_ova = $this->input->post('anime_ova');
+		$a->anime_alt_name = $this->input->post('anime_alt_name');
+		$a->anime_watched_status = $this->input->post('anime_watched_status');
+		
+		$a->save();
+		if(!$a->save()) {
+			redirect('animes/editAnime/'.$id);
 		} else {
 			redirect('animes/listAnime');
 		}
